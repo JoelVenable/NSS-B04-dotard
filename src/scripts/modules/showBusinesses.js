@@ -6,9 +6,13 @@ module.exports.showBusinesses = function (businesses) {
   }
   output.innerHTML = businesses.reduce(
     (html, business) => {
+      console.log(business.orders);
       html += `
       <div id="${business.companyName}">
-        <h3>${business.companyName}</h3>
+        <h3>
+          ${business.companyName}
+          ($${business.orders.reduce((acc, num) => acc += num).toFixed(2)})
+        </h3>
         <p>${business.addressFullStreet}</p>
         <p>${business.addressCity}, ${business.addressStateCode} ${business.addressZipCode}</p>
       </div>
